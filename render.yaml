@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: mutualfundsahihai-backend
+    runtime: node
+    region: singapore   # closest to India
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000          # Render assigns this automatically; keep as fallback
+      - key: MONGO_URI
+        sync: false           # Set manually in Render dashboard
+      - key: JWT_SECRET
+        sync: false
+      - key: MFAPI_BASE_URL
+        value: https://api.mfapi.in
+      - key: GROQ_API_KEY
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false           # Set to your Vercel/Netlify URL once deployed
